@@ -6,6 +6,7 @@ def zonatrainers(campus : dict):
     print('Bienvendio usuario a zona trainer, porfavor indique su nombre')
     try:
         nombre = str(input(':)_ '))
+        campus['trainners']['nomtrains'].append(nombre)
         print('Seleccione la ruta de entrenamiento que desea dirigir')
         listrutas = list(campus['rutas'].keys())
         print(listrutas)

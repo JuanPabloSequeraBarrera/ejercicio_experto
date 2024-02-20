@@ -4,6 +4,7 @@ import modulos.campers as camp
 import modulos.admin as admin
 import modulos.trainers as t
 import modulos.matriculas as m
+import modulos.reportes as r
 campus ={
     'campers':{},
     'rutas':{
@@ -58,7 +59,9 @@ campus ={
             'noestudiante': 0
         }
     },
-    'trainners':{},
+    'trainners':{
+        'nomtrains':[]
+    },
     'matriculas':{},
 }
 isActive = True
@@ -74,7 +77,7 @@ while isActive:
     elif (opciones == 4):
         m.gestormatriculas(campus)
     elif (opciones ==5): 
-        pass
+        r.menureport(campus)
     elif (opciones == 6):
         isActive = False
         print('Muchas gracias por hacer uso del software')

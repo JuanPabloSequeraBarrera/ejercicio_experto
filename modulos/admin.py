@@ -233,13 +233,24 @@ def notascampers(campus: dict):
         print(f'Las notas del camper {camp} han sido actualizadas')
         os.system('pause')
 
-def estudiantesriesgo (campus : dict):
+def estudiantesriesgo(campus : dict):
     print(menu.titulo)
     print('Bienvenido al buscador de estudiantes en zona de riesgo')
     print('Seleccione el modulo en el cual quiere buscar los campers con riesgo')
-    lstmodul = list(campus['campers']['id']['notas'].keys()) #necesito que me imprima todas las llaves de los modulos, pero como son todos los campers
-    print(lstmodul) #el id es variable
-    select = str(input(':)_ '))
-    for camper, info in campus['campers'].items():
-        if 'situacion' in info['notas'][select] and info['notas'][select]['situacion'] == 'reprobado':
-            print(f'camper:{campus["campers"]}')
+    try:
+        for item in campus['campers']:
+            lstmodul = list(campus['campers'][item]['notas'].keys()) #necesito que me imprima todas las llaves de los modulos, pero como son todos los campers
+            print(lstmodul) #el id es variable
+            select = str(input(':)_ '))
+            for info in campus['campers'][item]['notas'][select].items():
+                if campus['campers'][item]['notas'][select]['situacion'] == 'reprobado':
+                    print(f'El camper {item} esta en riesgo')
+                    os.system('pause')
+                    return
+    except ValueError:
+        print('Dato ingresado no es valido')
+        os.system('pause')
+        return
+    else:
+        print('Estos son los campers en riesgo')
+            
